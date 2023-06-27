@@ -1,13 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.banner {
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-dark {
+  background-image: url(../src/assets/bg-mobile-dark.jpg);
+}
+.banner-light {
+  background-image: url(../src/assets/bg-mobile-light.jpg);
+}
+
+@media screen and (min-width: 768px) {
+  .banner-dark {
+    background-image: url(../src/assets/bg-desktop-dark.jpg);
+  }
+  .banner-light {
+    background-image: url(../src/assets/bg-desktop-light.jpg);
+  }
+}
+
+@layer utilities {
+  /* Needs to go in utilities for it to be applied on the hover state */
+
+  .center-abs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .chkbox-filled {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to bottom,
+      hsl(192, 100%, 67%),
+      hsl(280, 87%, 65%)
+    );
+  }
+
+  .chkbox {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+
+  .chkbox-dark {
+    border: 2px solid hsl(233, 14%, 35%);
+  }
+
+  .chkbox-light {
+    border: 2px solid hsl(233, 11%, 84%);
+  }
+
+  .chkbox-hover {
+    cursor: pointer;
+    border-color: transparent;
+  }
+
+  /* https://codyhouse.co/nuggets/css-gradient-borders  */
+  .chkbox-hover-dark {
+    background: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%))
+        padding-box,
+      linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+        border-box;
+  }
+
+  .chkbox-hover-light {
+    background: linear-gradient(white, white) padding-box,
+      linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+        border-box;
+  }
 }
