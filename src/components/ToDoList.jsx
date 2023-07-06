@@ -9,6 +9,10 @@ export default function ToDoList({
   onDeleteTodo,
   onToggleComplete,
   onClearComplete,
+  onDragstart,
+  onDragEnd,
+  onDragEnter,
+  onDragLeave,
 }) {
   const [filterBy, setFilterBy] = useState("all");
 
@@ -45,6 +49,10 @@ export default function ToDoList({
                 darkMode={darkMode}
                 onDeleteTodo={onDeleteTodo}
                 onToggleComplete={onToggleComplete}
+                onDragstart={onDragstart}
+                onDragEnd={onDragEnd}
+                onDragEnter={onDragEnter}
+                onDragLeave={onDragLeave}
               />
             );
           })}

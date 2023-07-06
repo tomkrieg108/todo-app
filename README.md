@@ -9,9 +9,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [Continued development](#continued-development)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -31,8 +28,10 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](<[label](../todo-app-main/README-template.md)>)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/tomkrieg108/todo-app)
+- Live Site URL: [Add live site URL here](https://todo-app-seven-tawny.vercel.app/)
+
+## My process
 
 ### Built with
 
@@ -42,9 +41,3 @@ Users should be able to:
 - Tailwindcss
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-
-### Continued development
-
-Better use of component composition, less prop drilling
-Drag and drop fuctionality inthis app not yet implemented.
-Drag and drop functionality in react-apps to be researched.

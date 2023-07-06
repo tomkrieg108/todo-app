@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Form from "../components/Form";
 import ToDoList from "../components/ToDoList";
 
 function HomePage() {
   const [darkMode, setDarkMode] = useState(true);
   const [todoList, setTodoList] = useState([]);
+  const draggedItem = useRef(null);
+
+  function swapItems(draggedItemId, dragEnterItemId) {
+    //get indicies of the items to swap
+    let i1 = null;
+    let i2 = null;
+    todoList.forEach((el, i) => {
+      i1 = el.id === draggedItemId ? i : i1;
+      i2 = el.id === dragEnterItemId ? i : i2;
+    });
+    if (i1 === null || i2 === null) return;
+    // swap the items
+    let newList = todoList.slice();
+    [newList[i1], newList[i2]] = [newList[i2], newList[i1]];
+    setTodoList((todoList) => {
+      return newList;
+    });
+  }
 
   function handleToggleDisplayMode() {
     setDarkMode((darkMode) => {
@@ -28,14 +46,30 @@ function HomePage() {
   }
 
   function handleClearComplete() {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete all completed items?"
-    );
-
+    // const confirmed = window.confirm(
+    //   "Are you sure you want to delete all completed items?"
+    // );
+    const confirmed = true;
     if (confirmed) {
       setTodoList((todoList) => todoList.filter((item) => !item.completed));
     }
   }
+
+  function handleDragStart(item) {
+    draggedItem.current = item;
+  }
+
+  function handleDragEnd(item) {
+    draggedItem.current = null;
+  }
+
+  function handleDragEnter(item) {
+    if (item.id !== draggedItem.current.id) {
+      swapItems(draggedItem.current.id, item.id);
+    }
+  }
+
+  function handleDragLeave(item) {}
 
   return (
     <div
@@ -98,6 +132,10 @@ function HomePage() {
           onDeleteTodo={handleDeleteTodo}
           onToggleComplete={handleToggleComplete}
           onClearComplete={handleClearComplete}
+          onDragstart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
         />
       </div>
     </div>

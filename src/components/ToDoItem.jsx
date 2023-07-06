@@ -1,10 +1,19 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-function ToDoItem({ item, darkMode, onDeleteTodo, onToggleComplete }) {
-  const [dragState, setDragState] = useState(null);
+function ToDoItem({
+  item,
+  darkMode,
+  onDeleteTodo,
+  onToggleComplete,
+  onDragstart,
+  onDragEnd,
+  onDragEnter,
+  onDragLeave,
+}) {
+  // const [dragState, setDragState] = useState(null);
 
   const setDragStyle = function () {
-    if (dragState === "start") return "bg-white";
+    // if (dragState === "start") return "bg-white";
     return "";
   };
 
@@ -12,29 +21,33 @@ function ToDoItem({ item, darkMode, onDeleteTodo, onToggleComplete }) {
     <div>
       <li
         onDragStart={() => {
-          setDragState("start");
-          console.log(`Drag start on: ${item.description}`);
+          // setDragState("start");
+          onDragstart(item);
+          // console.log(`Drag start on: ${item.description}`);
         }}
         onDragEnd={() => {
-          setDragState("end");
-          console.log(`Drag end on: ${item.description}`);
+          // setDragState("end");
+          onDragEnd(item);
+          // console.log(`Drag end on: ${item.description}`);
         }}
         onDragOver={(e) => {
           e.preventDefault(); //need this to allow it to receive drop events
           //console.log(`Drag over on: ${item.description}`);
         }}
         onDragEnter={(e) => {
-          //e.preventDefault();
-          setDragState("enter");
-          console.log(`Drag enter on: ${item.description}`);
+          e.preventDefault(); //Don't think this is needed
+          // setDragState("enter");
+          onDragEnter(item);
+          // console.log(`Drag enter on: ${item.description}`);
         }}
         onDragLeave={() => {
-          setDragState("leave");
-          console.log(`Drag leave on: ${item.description}`);
+          // setDragState("leave");
+          onDragLeave(item);
+          // console.log(`Drag leave on: ${item.description}`);
         }}
         onDrop={() => {
-          setDragState("drop");
-          console.log(`Drag Drop on: ${item.description}`);
+          // setDragState("drop");
+          // console.log(`Drag Drop on: ${item.description}`);
         }}
         draggable="true"
         className={`group py-5 px-6  border-b  w-full flex justify-between items-center first:rounded-t-md ${
