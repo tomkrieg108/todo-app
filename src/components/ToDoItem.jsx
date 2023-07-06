@@ -10,51 +10,28 @@ function ToDoItem({
   onDragEnter,
   onDragLeave,
 }) {
-  // const [dragState, setDragState] = useState(null);
-
-  const setDragStyle = function () {
-    // if (dragState === "start") return "bg-white";
-    return "";
-  };
-
   return (
     <div>
       <li
         onDragStart={() => {
-          // setDragState("start");
           onDragstart(item);
-          // console.log(`Drag start on: ${item.description}`);
         }}
         onDragEnd={() => {
-          // setDragState("end");
           onDragEnd(item);
-          // console.log(`Drag end on: ${item.description}`);
         }}
         onDragOver={(e) => {
           e.preventDefault(); //need this to allow it to receive drop events
-          //console.log(`Drag over on: ${item.description}`);
         }}
         onDragEnter={(e) => {
-          e.preventDefault(); //Don't think this is needed
-          // setDragState("enter");
+          e.preventDefault(); //Don't think this is needed!
           onDragEnter(item);
-          // console.log(`Drag enter on: ${item.description}`);
-        }}
-        onDragLeave={() => {
-          // setDragState("leave");
-          onDragLeave(item);
-          // console.log(`Drag leave on: ${item.description}`);
-        }}
-        onDrop={() => {
-          // setDragState("drop");
-          // console.log(`Drag Drop on: ${item.description}`);
         }}
         draggable="true"
         className={`group py-5 px-6  border-b  w-full flex justify-between items-center first:rounded-t-md ${
           darkMode
             ? "border-VeryDarkGrayishBlue2 bg-inherit"
             : "border-LightGrayishBlue bg-inherit"
-        } ${setDragStyle()} `}
+        }`}
       >
         <div className="flex justify-center items-center space-x-6">
           <div

@@ -1,20 +1,32 @@
-function ToDoFilter({ filterBy, onUpdateFilter }) {
+function ToDoFilter({ darkMode, filterBy, onUpdateFilter }) {
+  function getButtonStyles(btn) {
+    return `${
+      filterBy === `${btn}`
+        ? "text-BrightBlue"
+        : `${
+            darkMode
+              ? "text-DarkGrayishBlue2 hover:text-white"
+              : "text-DarkGrayishBlue hover:text-VeryDarkGrayishBlue"
+          }`
+    }`;
+  }
+
   return (
     <>
       <button
-        className={`${filterBy === "all" && "text-BrightBlue"}`}
+        className={` ${getButtonStyles("all")} `}
         onClick={() => onUpdateFilter("all")}
       >
         All
       </button>
       <button
-        className={`${filterBy === "active" && "text-BrightBlue"}`}
+        className={` ${getButtonStyles("active")} `}
         onClick={() => onUpdateFilter("active")}
       >
         Active
       </button>
       <button
-        className={`${filterBy === "complete" && "text-BrightBlue"}`}
+        className={` ${getButtonStyles("complete")} `}
         onClick={() => onUpdateFilter("complete")}
       >
         Complete
